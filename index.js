@@ -1,8 +1,12 @@
 const writeTask = require('./utils/writeTask.js')
 const readTask = require('./utils/readTask.js')
+const utility = require('./utils/utility.js')
+
 const args = process.argv.slice(2);
 const command = args[0]
-let nextId=0;
+
+let nextId=utility.getMaxID();
+
 switch (command) {
     case 'add':
         const descriptionInput = args[1] || "No Description"

@@ -3,10 +3,9 @@ const readTask = require('./readTask.js');
 
 
 function write(task) {
-    const response = readTask.read();
-    const jsonArray = response ? JSON.parse(response) : [];
+    const jsonArray = readTask.read() ? JSON.parse(readTask.read()) : []
     jsonArray.push(task);
-    fs.writeFileSync('./data/tasks.json', JSON.stringify(jsonArray, null, 2));
+    fs.writeFileSync('./data/tasks.json', JSON.stringify(jsonArray))
 }
 
 module.exports = {
