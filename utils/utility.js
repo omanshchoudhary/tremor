@@ -1,10 +1,7 @@
-const readTask = require('./readTask.js')
-
-function getMaxID(){
-    const data = JSON.parse(readTask.read());
+function getMaxID(taskArray){
     let maxi = 0;
-    for(item of data){
-        if(item.id > maxi) maxi = item.id;
+    for(let task of taskArray){
+        if(task.id > maxi) maxi = task.id;
     }
     return maxi;
 }
