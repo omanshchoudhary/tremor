@@ -53,15 +53,17 @@ switch (command) {
             console.log("Error: Please provide a valid numeric ID.");
             break;
         }
-
+        let check=false;
         taskArray = taskArray.map(task => {
             if (task.id === idToComplete) {
+                check= true;
                 return { ...task, status: "completed" }
             }
             return task;
         })
         writeTask.write(null, taskArray);
-        console.log("Success")
+        if(check) console.log("Success");
+        else console.log("Error: Please provide a valid numeric ID.");
         break;
 
     case 'delete':
@@ -71,12 +73,8 @@ switch (command) {
             console.log("Error: Please provide a valid numeric ID.");
             break;
         }
-        taskArray = taskArray.filter(task => {
-            if (task.id != idToDelete) {
-                return task;
-            }
-        })
-        if (taskArray.length + 1 != prevLength) {
+        taskArray = taskArray.filter(task => task.id!=idToDelete)
+        if (taskArray.length === prevLength) {
             console.log(`Error: Task with ID ${idToDelete} does not exist.`);
             break;
         }
