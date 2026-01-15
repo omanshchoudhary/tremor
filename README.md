@@ -74,62 +74,18 @@ tremor/
 }
 ```
 
-## Implementation Progress
+## Current Features
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Project Setup | Done | npm, nodemon configured |
-| File Operations | Done | Read/write to JSON |
-| ID Management | Done | Persistent unique IDs |
-| Add Command | Done | Multi-word support |
-| Pretty Print JSON | Pending | Single-line output currently |
-| List Formatting | Pending | Shows raw JSON |
-| Complete Command | Pending | - |
-| Delete Command | Pending | - |
-| Input Validation | Pending | - |
-| Error Handling | Pending | - |
-| Help Command | Pending | - |
+- Add tasks with descriptions
+- Persistent storage in JSON file
+- Unique ID generation
+- View all tasks
 
-## Roadmap
+## Upcoming Features
 
-**Phase 1 (Current):**
-- Fix JSON formatting
-- Implement formatted list view
-- Add complete command
-- Add delete command
-
-**Phase 2:**
+- Formatted list output
+- Mark tasks as complete
+- Delete tasks
 - Input validation
-- Comprehensive error handling
+- Error handling
 - Help command
-
-**Phase 3:**
-- Edit functionality
-- Task filtering
-- Search capability
-
-## Technical Details
-
-**Core Concepts Used:**
-- `fs.readFileSync()` / `fs.writeFileSync()`
-- `process.argv` for CLI arguments
-- `JSON.parse()` / `JSON.stringify()`
-- Module exports and code organization
-- Array manipulation methods
-
-## Known Issues
-
-1. JSON output is not pretty-printed
-2. List command shows raw JSON string
-3. No input validation for empty tasks
-4. Complete and delete commands not implemented
-
-## Contributing
-
-Feedback and suggestions welcome. This is a learning project but improvements are appreciated.
-
----
-
-**Version:** 1.0.0  
-**Status:** In Development  
-**Last Updated:** January 2026
