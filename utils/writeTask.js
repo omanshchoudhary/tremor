@@ -3,7 +3,7 @@ const readTask = require('./readTask.js');
 
 
 function write(task, taskArray) {
-    taskArray.push(task);
+    if(task) taskArray.push(task);
     fs.writeFileSync('./data/tasks.json', JSON.stringify(taskArray, null,2))
 }
 

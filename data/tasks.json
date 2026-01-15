@@ -1,14 +1,14 @@
 [
   {
-    "id": 1,
-    "description": "go and buy chocoloates",
-    "deadline": "2026-01-15",
-    "status": "pending"
-  },
-  {
     "id": 2,
     "description": "Go and buy cakes",
     "deadline": "2026-12-12",
-    "status": "pending"
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "description": "Buy some milk",
+    "deadline": "2026-01-02",
+    "status": "completed"
   }
 ]
