@@ -13,10 +13,12 @@ let nextId = utility.getMaxID(taskArray);
 
 switch (command) {
   case 'add':
-    const descriptionInput = args.slice(1).join(' ') || "No Description"
+    const descriptionInput = args[1] || "No Description"
+    const deadlineInput = args[2] || "";
     const task = {
       "id": (++nextId),
       "description": descriptionInput,
+      "deadline": deadlineInput,
       "status": "pending"
     }
     writeTask.write(task, taskArray);
@@ -28,12 +30,17 @@ switch (command) {
       console.log('No tasks found')
       break;
     }
-    const list = `
-${taskArray.map(task => {
-      return `[${task.status}] ${task.description}`
-    }).join('\n')}
-        `;
-    console.log(list);
+    const maxDesc = Math.max(...taskArray.map(t => t.description.length), 11);
+    const descWidth = maxDesc + 4;
+    const header = "ID".padEnd(6) + "Description".padEnd(descWidth) + "Deadline".padEnd(15) + "Status";
+    const separator = "-".repeat(descWidth + 30);
+    const table = taskArray.map(task => {
+      return task.id.toString().padEnd(6) +
+        task.description.padEnd(descWidth) +
+        task.deadline.padEnd(15) +
+        `[${task.status}]`;
+    }).join('\n');
+    console.log(`${header}\n${separator}\n${table}`);
     break;
 
   default:
