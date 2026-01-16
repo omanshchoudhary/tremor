@@ -48,38 +48,46 @@ switch (command) {
         break;
 
     case 'complete':
+        if (!args[1]) {
+            console.log("Error: Task ID is required");
+            break;
+        }
         const idToComplete = Number(args[1]);
         if (Number.isNaN(idToComplete)) {
             console.log("Error: Please provide a valid numeric ID.");
             break;
         }
-        let check=false;
+        let check = false;
         taskArray = taskArray.map(task => {
             if (task.id === idToComplete) {
-                check= true;
+                check = true;
                 return { ...task, status: "completed" }
             }
             return task;
         })
         writeTask.write(null, taskArray);
-        if(check) console.log("Success");
-        else console.log("Error: Please provide a valid numeric ID.");
+        if (check) console.log(`Task ${idToComplete} marked as completed`);
+        else console.log(`Error: Task with ID ${idToComplete} does not exist.`);
         break;
 
     case 'delete':
+        if (!args[1]) {
+            console.log("Error: Task ID is required");
+            break;
+        }
         const idToDelete = Number(args[1]);
         const prevLength = taskArray.length;
         if (Number.isNaN(idToDelete)) {
             console.log("Error: Please provide a valid numeric ID.");
             break;
         }
-        taskArray = taskArray.filter(task => task.id!=idToDelete)
+        taskArray = taskArray.filter(task => task.id != idToDelete)
         if (taskArray.length === prevLength) {
             console.log(`Error: Task with ID ${idToDelete} does not exist.`);
             break;
         }
         writeTask.write(null, taskArray);
-        console.log("Success")
+        console.log(`Task ${idToDelete} deleted successfully`);
         break;
 
     case 'help':

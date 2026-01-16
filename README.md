@@ -6,21 +6,6 @@ A file-based command-line todo list application built with Node.js.
 
 Tremor is a CLI todo list application that stores tasks in a JSON file. Focuses on practical implementation of core Node.js concepts.
 
-## Current Status
-
-**Working:**
-- Add tasks with persistent storage
-- Unique ID generation that survives restarts
-- Basic task viewing
-- File-based storage system
-
-**In Progress:**
-- Formatted list output
-- Task completion
-- Task deletion
-- Input validation
-- Error handling
-
 ## Installation
 
 **Requirements:**
@@ -38,18 +23,45 @@ npm install
 
 **Add a task:**
 ```bash
-node index.js add "Task description"
+node index.js add "Buy groceries" "2026-01-20"
+node index.js add "Complete project"
 ```
 
-**View tasks:**
+**List all tasks:**
 ```bash
-node index.js print
+node index.js list
+```
+
+**Mark task as complete:**
+```bash
+node index.js complete 1
+```
+
+**Delete a task:**
+```bash
+node index.js delete 2
+```
+
+**Show help:**
+```bash
+node index.js help
 ```
 
 **Development mode:**
 ```bash
 npm start
 ```
+
+## Features
+
+- Add tasks with descriptions and optional deadlines
+- List all tasks in formatted table view
+- Mark tasks as completed
+- Delete tasks by ID
+- Persistent storage in JSON file
+- Unique ID generation that survives restarts
+- Input validation and error handling
+- Help command with usage examples
 
 ## Project Structure
 
@@ -62,30 +74,17 @@ tremor/
 │   ├── writeTask.js     # Write operations
 │   └── utility.js       # Helper functions
 ├── index.js             # Main entry point
-└── package.json
+├── package.json
+└── README.md
 ```
 
-**Task Format:**
+## Task Format
+
 ```json
 {
   "id": 1,
   "description": "Task description",
+  "deadline": "2026-01-20",
   "status": "pending"
 }
 ```
-
-## Current Features
-
-- Add tasks with descriptions
-- Persistent storage in JSON file
-- Unique ID generation
-- View all tasks
-
-## Upcoming Features
-
-- Formatted list output
-- Mark tasks as complete
-- Delete tasks
-- Input validation
-- Error handling
-- Help command

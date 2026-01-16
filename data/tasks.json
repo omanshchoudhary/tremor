@@ -10,5 +10,23 @@
     "description": "Buy some milk",
     "deadline": "2026-01-02",
     "status": "completed"
+  },
+  {
+    "id": 4,
+    "description": "Testing basic add functionality",
+    "deadline": "2026-02-15",
+    "status": "completed"
+  },
+  {
+    "id": 6,
+    "description": "This is a very long task description that goes on and on and on to test how the system handles extremely long strings in the description field that might break formatting or cause buffer issues when displayed in the terminal",
+    "deadline": "",
+    "status": "pending"
+  },
+  {
+    "id": 7,
+    "description": "Test task one",
+    "deadline": "2026-03-01",
+    "status": "completed"
   }
 ]
