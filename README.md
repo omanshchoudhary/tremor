@@ -1,10 +1,34 @@
-# Tremor - CLI Todo List Manager
+```
+╔════════════════════════════════════════════════════════════╗
+║                                                            ║
+║  ████████╗██████╗ ███████╗███╗   ███╗ ██████╗ ██████╗     ║
+║  ╚══██╔══╝██╔══██╗██╔════╝████╗ ████║██╔═══██╗██╔══██╗    ║
+║     ██║   ██████╔╝█████╗  ██╔████╔██║██║   ██║██████╔╝    ║
+║     ██║   ██╔══██╗██╔══╝  ██║╚██╔╝██║██║   ██║██╔══██╗    ║
+║     ██║   ██║  ██║███████╗██║ ╚═╝ ██║╚██████╔╝██║  ██║    ║
+║     ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝    ║
+║                                                            ║
+║            CLI Todo List Manager                          ║
+║                                                            ║
+╚════════════════════════════════════════════════════════════╝
+```
 
 A file-based command-line todo list application built with Node.js.
 
 ## Overview
 
 Tremor is a CLI todo list application that stores tasks in a JSON file. Focuses on practical implementation of core Node.js concepts.
+
+## Features
+
+- Add tasks with descriptions and optional deadlines
+- List all tasks in formatted table view
+- Mark tasks as completed
+- Delete tasks by ID
+- Persistent storage in JSON file
+- Unique ID generation that survives restarts
+- Input validation and error handling
+- Help command with usage examples
 
 ## Installation
 
@@ -19,49 +43,121 @@ cd tremor
 npm install
 ```
 
-## Usage
+## Quick Start
 
-**Add a task:**
 ```bash
+# Add some tasks
 node index.js add "Buy groceries" "2026-01-20"
-node index.js add "Complete project"
+node index.js add "Complete Node.js project"
+node index.js add "Read documentation" "2026-01-25"
+
+# View all tasks
+node index.js list
+
+# Mark task as complete
+node index.js complete 1
+
+# Delete a task
+node index.js delete 2
 ```
 
-**List all tasks:**
+## Usage
+
+### Add a Task
+```bash
+node index.js add "Task description" "2026-01-20"
+node index.js add "Task without deadline"
+```
+
+**Output:**
+```
+Task added with ID: 1
+```
+
+### List All Tasks
 ```bash
 node index.js list
 ```
 
-**Mark task as complete:**
-```bash
-node index.js complete 1
+**Output:**
+```
+ID    Description                           Deadline        Status
+--------------------------------------------------------------------
+2     Go and buy cakes                      2026-12-12      [completed]
+3     Buy some milk                         2026-01-02      [completed]
+4     Testing basic add functionality       2026-02-15      [pending]
 ```
 
-**Delete a task:**
+### Mark Task as Complete
+```bash
+node index.js complete 3
+```
+
+**Output:**
+```
+Task 3 marked as completed
+```
+
+### Delete a Task
 ```bash
 node index.js delete 2
 ```
 
-**Show help:**
+**Output:**
+```
+Task 2 deleted successfully
+```
+
+### Show Help
 ```bash
 node index.js help
 ```
 
-**Development mode:**
+**Output:**
+```
+Usage: node index.js <command> [arguments]
+
+Available Commands:
+  add <description> <deadline>   Add a new task
+  list                           Show all tasks
+  complete <id>                  Mark task as completed
+  delete <id>                    Delete a task
+  help                           Show this help
+
+Examples:
+  node index.js add "Buy milk" "2026-01-20"
+  node index.js list
+  node index.js complete 1
+  node index.js delete 2
+```
+
+### Development Mode
 ```bash
 npm start
 ```
+Runs with nodemon for auto-reload during development.
 
-## Features
+## Error Handling
 
-- Add tasks with descriptions and optional deadlines
-- List all tasks in formatted table view
-- Mark tasks as completed
-- Delete tasks by ID
-- Persistent storage in JSON file
-- Unique ID generation that survives restarts
-- Input validation and error handling
-- Help command with usage examples
+The application handles common errors:
+
+```bash
+# Missing task description
+$ node index.js add
+Error: Task description is required
+
+# Invalid task ID
+$ node index.js complete abc
+Error: Please provide a valid numeric ID.
+
+# Task not found
+$ node index.js delete 999
+Error: Task with ID 999 does not exist.
+
+# Invalid command
+$ node index.js invalid
+Error: Invalid command. Use 'add', 'list', 'complete', 'delete' or 'help
+```
 
 ## Project Structure
 
@@ -79,6 +175,8 @@ tremor/
 ```
 
 ## Task Format
+
+Tasks are stored in JSON format:
 
 ```json
 {
